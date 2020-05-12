@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run dev && npm run server",
     "dev": "webpack --mode development",
     "prod": "webpack --mode production",
-    "server":"webpack"
+    "server": "webpack",
+    "ser":"nodemon ./src/server/index.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,7 @@
     "css-loader": "^3.5.3",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
+    "nodemon": "^2.0.3",
     "vue-loader": "^15.9.2",
     "vue-style-loader": "^4.1.2",
     "webpack": "^4.43.0",
@@ -24,6 +26,9 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "koa": "^2.11.0",
+    "koa-route": "^3.2.0",
+    "koa-router": "^8.0.8",
     "vue": "^2.6.11",
     "vue-router": "^3.1.6",
     "vue-server-renderer": "^2.6.11",

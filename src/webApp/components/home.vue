@@ -10,7 +10,7 @@
 <script>
 import { mapActions,mapGetters } from 'vuex'
 export default {
-  name: 'HelloWorld',
+  name: 'Home',
   methods: {
     ...mapActions(['increment', 'decrement'])
   },

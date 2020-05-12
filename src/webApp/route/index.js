@@ -12,10 +12,13 @@ export function createRouter() {
         routes: [{
             path: '/',
             component: Home
-        }, {
-            path: '/index',
-            component: Index
-        }]
+            
+        }, 
+        // {
+        //     path: '/index',
+        //     component: Index
+        // }
+    ]
     })
     return router
 }

@@ -7,6 +7,8 @@ import {createApp} from './main'
 
 //要求返回一个promise
 export default context => {
+    console.log(context , '进来了')
+
     return new Promise((resolve, reject) => {
         const {app, router, store} = createApp()   //这些东西是给node用的， node会将后台真实的路由返过来。
         // 则前端的路由不能用hash, 要用history
@@ -20,13 +22,21 @@ export default context => {
         router.onReady(() => {
             //将路由对应的模板找出来
             const matchComponents = router.getMatchedComponents()
-
+            console.log(matchComponents, '路由')
+            // 匹配不到的路由，执行 reject 函数，并返回 404
+            if (!matchComponents.length) {
+                return reject({ code: 404 })
+            }
 
             Promise.all(matchComponents.map((component) => {
-                return component.asyncData({store})
+                if(component.asyncData) {
+                    return component.asyncData({store})
+                }
             })).then(() => {
                 //读取完,将数据交个后台
                 context.state = store.state
+                console.log(context)
+                resolve(app)
             })
         })
     })
