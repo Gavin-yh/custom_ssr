@@ -14,10 +14,10 @@ export function createRouter() {
             component: Home
             
         }, 
-        // {
-        //     path: '/index',
-        //     component: Index
-        // }
+        {
+            path: '/index',
+            component: Index
+        }
     ]
     })
     return router

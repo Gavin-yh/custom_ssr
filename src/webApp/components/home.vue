@@ -1,6 +1,6 @@
 <template>
-  <div class="hello">
-    <h1>hello world</h1>
+  <div class="home">
+    <h1>hello world ==> home</h1>
     <button @click="increment">加一</button>
     <button @click="decrement">加一</button>
     <div>{{count}}</div>

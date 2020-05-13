@@ -22,7 +22,7 @@ export default context => {
         router.onReady(() => {
             //将路由对应的模板找出来
             const matchComponents = router.getMatchedComponents()
-            console.log(matchComponents, '路由')
+            
             // 匹配不到的路由，执行 reject 函数，并返回 404
             if (!matchComponents.length) {
                 return reject({ code: 404 })

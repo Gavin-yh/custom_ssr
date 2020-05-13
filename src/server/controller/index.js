@@ -8,15 +8,17 @@ const {
 } = require('path')
 const fs = require('fs')
 const serverBundle = require('../../../dist/assets/vue-ssr-server-bundle.json')
-const template = fs.readFileSync(join(__dirname, 'index.html'))
+const template = fs.readFileSync(join(__dirname, 'index.html'), "utf-8")
 const clientManifest = require('../../../dist/assets/vue-ssr-client-manifest.json')
-// console.log(template.toString())
+
 const router = new Router()
+
 
 router.get('/', async (ctx, next) => {
     const context = {
         url: ctx.url
     }
+
 
     const renderer = createBundleRenderer(serverBundle, {
         runInNewContext: false, // 推荐
@@ -29,38 +31,16 @@ router.get('/', async (ctx, next) => {
             if(!renderer) {
                 return ctx.body = "miss is error"
             }
-            const ssrStream = renderer.renderToStream(context)
-            console.log(ssrStream, 'dddddddd')
-            ctx.status = 200
-            ctx.type = 'html'
-            ssrStream.on('error',err => {reject(err)}).pipe(ctx.res)
+            console.log('s')
+            renderer.renderToString(context, (err, html) => {
+                if(!err) {
+                    resolve(html)
+                }
+            })
         })
     }
-
-    await createSSRStreamPromise()
-    
-    // 这里无需传入一个应用程序，因为在执行 bundle 时已经自动创建过。
-    // 现在我们的服务器与应用程序已经解耦！
-    // renderer.renderToString(context, (err, html) => {
-    //     // 处理异常……
-    //     console.log(err)
-    //     console.log(html)
-
-    //     ctx.body = html
-    // })
-    // renderer.renderToString(app, (err, html) => {
-    //     if (err) {
-    //     ctx.body = '错误'
-    //     return
-    //     }
-    //     ctx.body = `
-    //     <!DOCTYPE html>
-    //     <html lang="en">
-    //         <head><title>Hello</title></head>
-    //         <body>${html}</body>
-    //     </html>
-    //     `
-    // })
+    ctx.type = 'text/html;charset=utf-8'
+    ctx.body = await createSSRStreamPromise()
 })
 
 router.get('/index/getList', (ctx, next) => {
@@ -71,6 +51,9 @@ router.get('/index/getList', (ctx, next) => {
     ctx.set("Content-Type", "application/json")
     ctx.body = JSON.stringify(json)
 })
+
+
+
 
 
 

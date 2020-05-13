@@ -5,7 +5,7 @@ const {
     resolve
 } = require('path')
 const _mode = argv.mode || 'server'
-const {VueLoaderPlugin} = require('vue-loader')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const _mergeConfig = require(`./config/webpack.${_mode}.js`)
 let webpackConfig = {
     output: {

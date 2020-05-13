@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+    <h1>hello gavin</h1>
+    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <router-link to="/"> home</router-link>
     <router-link to='/index'>index </router-link>
     <router-view></router-view>
@@ -9,6 +10,7 @@
 
 <script>
 
+console.log("开始渲染dljflajlkfjlkajlkfjlajdfasd", )
 export default {
   name: 'App',
 }

@@ -10,10 +10,11 @@ export function createApp() {
   let router = createRouter()
   let store = createStore()
 
-  let app = {
+  let app = new Vue({
     router,
     store,
     render: h => h(App)   // 告诉对应的外边，去哪里渲染这个元素
-  }
+  })
+  
   return {app, router, store}
 }

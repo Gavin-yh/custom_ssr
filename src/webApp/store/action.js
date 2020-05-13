@@ -10,5 +10,5 @@ export const getList = ({commit, state}) => {
     })
 }
 
-export const increment = ({commit}) => commit('increment')
-export const decrement = ({commit}) => commit('decrement')
+export const increment = ({commit}) => commit('INCREMENT')
+export const decrement = ({commit}) => commit('DECREMENT')
