@@ -13,7 +13,7 @@ const {
 } = require('path')
 const fs = require('fs')
 const serverBundle = require('../../dist/assets/vue-ssr-server-bundle.json')
-const template = fs.readFileSync(join(__dirname, 'index.html'), "utf-8")
+const template = fs.readFileSync(join(__dirname, 'index.html'), "utf-8")   //  这里读的时候需要注意，要utf-8，不然会报错，template.head() is no function
 const clientManifest = require('../../dist/assets/vue-ssr-client-manifest.json')
 
 
