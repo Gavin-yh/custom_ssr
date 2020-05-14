@@ -10,7 +10,7 @@ module.exports = {
          
     },
     plugins: [
-        new vueSSRServerPlugin()   // 会将前端的列表生成出来
+        new vueSSRServerPlugin()   // 会将服务端的列表生成出来  vue-ssr-server-bundle.json
     ]
 }
 

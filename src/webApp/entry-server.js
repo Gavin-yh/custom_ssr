@@ -17,8 +17,9 @@ export default context => {
         //router是前端的路由，
         //context.url是后台给你的路由
         //这样子前后端路由就联动了。
-        router.push(context.url)
+        router.push(context.url)   //  ====》 这里的context在结合koa使用renderer时，传进来的
 
+        //后端数据预请求
         router.onReady(() => {
             //将路由对应的模板找出来
             const matchComponents = router.getMatchedComponents()
@@ -35,7 +36,6 @@ export default context => {
             })).then(() => {
                 //读取完,将数据交个后台
                 context.state = store.state
-                console.log(context)
                 resolve(app)
             })
         })
